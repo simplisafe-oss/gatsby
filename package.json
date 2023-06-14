@@ -1,6 +1,6 @@
 {
   "name": "simplisafe-gatsby",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "description": "Plugins for Gatsby",
   "main": "index.js",
   "scripts": {
