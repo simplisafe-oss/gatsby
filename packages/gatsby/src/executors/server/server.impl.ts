@@ -1,9 +1,7 @@
 import {
   ExecutorContext,
-  logger,
   parseTargetString,
   readTargetOptions,
-  stripIndents,
 } from '@nx/devkit'
 import { ChildProcess, fork } from 'child_process'
 import { join } from 'path'
@@ -15,12 +13,6 @@ export default async function* serverExecutor(
   options: GatsbyPluginBuilderSchema,
   context: ExecutorContext
 ) {
-  logger.warn(stripIndents`
-    ⚠️ The Gatsby plugin will be deprecated in Nx 15 and removed in Nx 16. We are committed to providing high-quality tooling to community, and we no longer have the capacity to keep this plugin updated.
-
-    If you are interested in taking stewardship please contact jack@nrwl.io or drop a message in our [community Slack](https://go.nrwl.io/join-slack?utm_source=nx.dev).
-  `)
-
   const buildTarget = parseTargetString(options.buildTarget)
   const baseUrl = `${options.https ? 'https' : 'http'}://${options.host}:${
     options.port

@@ -245,7 +245,7 @@ xdescribe('app', () => {
     )
   })
 
-  it('should set up the nrwl gatsby build builder', async () => {
+  it('should set up the nrwl gatsby build executor', async () => {
     await applicationGenerator(tree, {
       name: 'my-app',
       style: 'css',
@@ -259,7 +259,7 @@ xdescribe('app', () => {
     })
   })
 
-  it('should set up the nrwl gatsby server builder', async () => {
+  it('should set up the nrwl gatsby server executor', async () => {
     await applicationGenerator(tree, {
       name: 'my-app',
       style: 'css',
