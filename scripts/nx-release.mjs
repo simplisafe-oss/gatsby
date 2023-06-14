@@ -21,16 +21,16 @@ const parsedArgs = yargsParser(process.argv, {
 
 console.log('parsedArgs', parsedArgs)
 
-if (!parsedArgs.local && !process.env.GITHUB_TOKEN_RELEASE_IT_NX) {
-  console.error('process.env.GITHUB_TOKEN_RELEASE_IT_NX is not set')
+if (!parsedArgs.local && !process.env.GITHUB_TOKEN_RELEASE) {
+  console.error('process.env.GITHUB_TOKEN_RELEASE is not set')
   process.exit(1)
 }
 
 if (parsedArgs.help) {
   console.log(`
-      Usage: yarn nx-release <version> [options]
+      Usage: npm run nx-release <version> [options]
 
-      Example: "yarn nx-release 1.0.0-beta.1"
+      Example: "npm run nx-release 1.0.0-beta.1"
 
       The acceptable format for the version number is:
       {number}.{number}.{number}[-{alpha|beta|rc}.{number}]
@@ -115,7 +115,7 @@ if (!parsedVersion.isValid) {
     `\nError:\nThe specified version is not valid. You specified: "${parsedVersion.version}"`
   )
   console.error(
-    `Please run "yarn nx-release --help" for details on the acceptable version format.\n`
+    `Please run "npm nx-release --help" for details on the acceptable version format.\n`
   )
   process.exit(1)
 } else {
@@ -160,7 +160,7 @@ childProcess.execSync(`find dist/npm -maxdepth 1 -name "*.tgz" -delete`, {
 const DRY_RUN = !!parsedArgs['dry-run']
 
 process.env.GITHUB_TOKEN = !parsedArgs.local
-  ? process.env.GITHUB_TOKEN_RELEASE_IT_NX
+  ? process.env.GITHUB_TOKEN_RELEASE
   : 'dummy-gh-token'
 /**
  * Set the static options for release-it

@@ -4,46 +4,20 @@
   "sourceRoot": "packages/gatsby",
   "projectType": "library",
   "targets": {
-    "test": {
-      "executor": "@nx/jest:jest",
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "dependsOn": ["^build"],
       "options": {
-        "jestConfig": "packages/gatsby/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "outputs": ["coverage/packages/gatsby"]
-    },
-    "build-base": {
-      "executor": "@nx/js:tsc",
-      "options": {
-        "outputPath": "dist/packages/gatsby",
-        "tsConfig": "packages/gatsby/tsconfig.lib.json",
         "main": "packages/gatsby/index.ts",
+        "tsConfig": "packages/gatsby/tsconfig.json",
+        "outputPath": "dist/packages/gatsby",
+        "updateBuildableProjectDepsInPackageJson": false,
         "assets": [
-          {
-            "input": "packages/gatsby/src",
-            "glob": "**/.babelrc*",
-            "output": "./src"
-          },
-          {
-            "input": "packages/gatsby/src",
-            "glob": "**/*.!(ts)",
-            "output": "./src"
-          },
-          {
-            "input": "packages/gatsby/plugins",
-            "glob": "**/*.!(ts)",
-            "output": "./plugins"
-          },
+          "packages/gatsby/*.md",
           {
             "input": "packages/gatsby",
             "glob": "**/*.json",
-            "ignore": ["**/tsconfig*.json", "project.json", ".eslintrc.json"],
-            "output": "/"
-          },
-          {
-            "input": "packages/gatsby",
-            "glob": "**/*.js",
-            "ignore": ["**/jest.config.js"],
+            "ignore": ["**/tsconfig*.json", "project.json"],
             "output": "/"
           },
           {
@@ -53,45 +27,10 @@
           },
           "LICENSE"
         ]
-      },
-      "outputs": ["{options.outputPath}"]
-    },
-    "build": {
-      "executor": "nx:run-commands",
-      "outputs": ["dist/packages/gatsby"],
-      "options": {
-        "commands": [
-          {
-            "command": "node ./tools/scripts/copy-readme.js gatsby"
-          },
-          "node ./scripts/add-dependency-to-build.js gatsby @nrwl/gatsby"
-        ],
-        "parallel": false
       }
-    },
-    "lint": {
-      "executor": "@nx/linter:eslint",
-      "options": {
-        "lintFilePatterns": [
-          "packages/gatsby/**/*.ts",
-          "packages/gatsby/**/*.spec.ts",
-          "packages/gatsby/**/*_spec.ts",
-          "packages/gatsby/**/*.spec.tsx",
-          "packages/gatsby/**/*.spec.js",
-          "packages/gatsby/**/*.spec.jsx",
-          "packages/gatsby/**/*.d.ts"
-        ]
-      },
-      "outputs": ["{options.outputFile}"]
     },
     "publish": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "commands": [
-          "node tools/scripts/publish.mjs gatsby {args.ver} {args.tag}"
-        ]
-      }
+      "command": "node tools/scripts/publish.mjs gatsby {args.ver} {args.tag}"
     }
   },
   "tags": []

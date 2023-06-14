@@ -5,12 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "nx run-many -t=build",
-    "nx-release": "./scripts/nx-release.mjs",
     "check-versions": "ts-node -P ./tools/tsconfig.tools.json ./tools/scripts/check-versions.ts",
-    "test": "nx run-many -t=test",
-    "build-ci": "nx build",
-    "test-ci": "nx test",
-    "e2e-ci": "nx e2e"
+    "nx-release": "./scripts/nx-release.mjs",
+    "test": "nx run-many -t=test"
   },
   "repository": {
     "type": "git",
