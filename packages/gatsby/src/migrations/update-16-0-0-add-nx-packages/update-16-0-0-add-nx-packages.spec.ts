@@ -8,7 +8,7 @@ describe('update-16-0-0-add-nx-packages', () => {
     tree = createTreeWithEmptyWorkspace()
 
     updateJson(tree, 'package.json', (json) => {
-      json.devDependencies['@nrwl/gatsby'] = '16.0.0'
+      json.devDependencies['@simplisafe-oss/nx-gatsby'] = '16.0.0'
       return json
     })
   })

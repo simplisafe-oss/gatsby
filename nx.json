@@ -40,6 +40,5 @@
         "babel": true
       }
     }
-  },
-  "defaultProject": "gatsby-example"
+  }
 }

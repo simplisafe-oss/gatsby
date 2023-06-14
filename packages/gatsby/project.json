@@ -64,7 +64,7 @@
           {
             "command": "node ./tools/scripts/copy-readme.js gatsby"
           },
-          "node ./scripts/add-dependency-to-build.js gatsby @nrwl/gatsby"
+          "node ./scripts/add-dependency-to-build.js gatsby @simplisafe-oss/nx-gatsby"
         ],
         "parallel": false
       }

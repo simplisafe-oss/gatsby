@@ -6,7 +6,7 @@
   "scripts": {
     "build": "nx run-many -t=build",
     "check-versions": "ts-node -P ./tools/tsconfig.tools.json ./tools/scripts/check-versions.ts",
-    "nx-release": "./scripts/nx-release.mjs",
+    "release": "./scripts/nx-release.mjs",
     "test": "nx run-many -t=test"
   },
   "repository": {
@@ -62,6 +62,7 @@
     "@nx/react": "16.3.2",
     "@nx/vite": "16.3.2",
     "@nx/workspace": "16.3.2",
+    "@simplisafe-oss/nx-gatsby": "*",
     "@swc-node/register": "^1.4.2",
     "@testing-library/react": "14.0.0",
     "@types/fs-extra": "^11.0.1",
