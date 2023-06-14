@@ -34,6 +34,11 @@
       "application": {
         "style": "css"
       }
+    },
+    "@nx/react": {
+      "application": {
+        "babel": true
+      }
     }
   },
   "defaultProject": "gatsby-example"

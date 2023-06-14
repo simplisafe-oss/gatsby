@@ -3,7 +3,3 @@
 /dist
 /coverage
 /tmp
-
-/apps/gatsby-example/node_modules
-/apps/gatsby-example/public
-/apps/gatsby-example/.cache

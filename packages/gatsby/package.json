@@ -1,6 +1,6 @@
 {
   "name": "@simplisafe-oss/nx-gatsby",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-alpha.1",
   "description": "Gatsby Plugin for Nx",
   "repository": {
     "type": "git",
@@ -41,5 +41,8 @@
     "@nx/cypress": "^16.0.3",
     "@nx/react": "^16.0.3",
     "@nx/jest": "^16.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "*"
   }
 }

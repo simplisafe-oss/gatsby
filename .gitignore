@@ -2,7 +2,3 @@ node_modules
 dist
 tmp
 .env
-
-/apps/gatsby-example/node_modules
-/apps/gatsby-example/public
-/apps/gatsby-example/.cache
