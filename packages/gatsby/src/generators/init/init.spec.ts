@@ -13,7 +13,7 @@ xdescribe('init', () => {
   it('should add react dependencies', async () => {
     await gatsbyInitGenerator(tree, {})
     const packageJson = readJson(tree, 'package.json')
-    expect(packageJson.dependencies['@nx/gatsby']).toBeUndefined()
+    expect(packageJson.dependencies['@simplisafe-oss/nx-gatsby']).toBeUndefined()
     expect(packageJson.dependencies['@nx/react']).toBeUndefined()
     expect(packageJson.dependencies['gatsby']).toBeDefined()
   })
@@ -22,7 +22,7 @@ xdescribe('init', () => {
     it('should be set if none was set before', async () => {
       await gatsbyInitGenerator(tree, {})
       const { cli } = readJson<NxJsonConfiguration>(tree, 'nx.json')
-      expect(cli.defaultCollection).toEqual('@nx/gatsby')
+      expect(cli.defaultCollection).toEqual('@simplisafe-oss/nx-gatsby')
     })
   })
 

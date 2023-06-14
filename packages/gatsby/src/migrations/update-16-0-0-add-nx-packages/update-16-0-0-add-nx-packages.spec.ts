@@ -24,13 +24,13 @@ describe('update-16-0-0-add-nx-packages', () => {
     ).not.toBeDefined()
   })
 
-  it('should add a dependency on @nx/gatsby', async () => {
+  it('should add a dependency on @simplisafe-oss/nx-gatsby', async () => {
     await replacePackage(tree)
 
     const packageJson = readJson(tree, 'package.json')
     const newDependencyVersion =
-      packageJson.devDependencies['@nx/gatsby'] ??
-      packageJson.dependencies['@nx/gatsby']
+      packageJson.devDependencies['@simplisafe-oss/nx-gatsby'] ??
+      packageJson.dependencies['@simplisafe-oss/nx-gatsby']
 
     expect(newDependencyVersion).toBeDefined()
   })

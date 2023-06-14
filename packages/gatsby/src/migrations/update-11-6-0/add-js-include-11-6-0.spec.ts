@@ -17,7 +17,7 @@ describe.skip('Add js include 11.6.0', () => {
           root: 'apps/app1',
           targets: {
             build: {
-              executor: '@nx/gatsby:build',
+              executor: '@simplisafe-oss/nx-gatsby:build',
             },
           },
         },

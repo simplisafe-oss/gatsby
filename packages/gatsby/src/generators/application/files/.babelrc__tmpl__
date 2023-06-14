@@ -1,7 +1,7 @@
 {
   "presets": [
     [
-      "@nx/gatsby/babel", {
+      "@simplisafe-oss/nx-gatsby/babel", {
         "reactRuntime": "automatic"
         <% if (style === '@emotion/styled') { %>,"reactImportSource": "@emotion/react"<% } %>
       }

@@ -3,6 +3,6 @@ dist
 tmp
 .env
 
-/apps/foo-bar/node_modules
-/apps/foo-bar/public
-/apps/foo-bar/.cache
+/apps/gatsby-example/node_modules
+/apps/gatsby-example/public
+/apps/gatsby-example/.cache

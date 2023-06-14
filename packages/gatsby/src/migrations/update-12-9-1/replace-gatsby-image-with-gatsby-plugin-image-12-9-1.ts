@@ -104,7 +104,7 @@ function updateAppPackageJson(tree: Tree) {
   const projects = getProjects(tree)
 
   projects.forEach((project) => {
-    if (project.targets?.build?.executor !== '@nx/gatsby:build') return
+    if (project.targets?.build?.executor !== '@simplisafe-oss/nx-gatsby:build') return
 
     const appPackageJsonPath = `${project.root}/package.json`
     if (tree.exists(appPackageJsonPath)) {

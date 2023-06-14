@@ -88,7 +88,7 @@ xdescribe('app', () => {
       )
 
       const nxJson = readJson<NxJsonConfiguration>(tree, 'nx.json')
-      expect(nxJson.generators['@nx/gatsby'].application.style).toEqual('scss')
+      expect(nxJson.generators['@simplisafe-oss/nx-gatsby'].application.style).toEqual('scss')
     })
   })
 
@@ -111,7 +111,7 @@ xdescribe('app', () => {
       )
 
       const nxJson = readJson<NxJsonConfiguration>(tree, 'nx.json')
-      expect(nxJson.generators['@nx/gatsby'].application.style).toEqual('less')
+      expect(nxJson.generators['@simplisafe-oss/nx-gatsby'].application.style).toEqual('less')
     })
   })
 
@@ -134,7 +134,7 @@ xdescribe('app', () => {
       )
 
       const nxJson = readJson<NxJsonConfiguration>(tree, 'nx.json')
-      expect(nxJson.generators['@nx/gatsby'].application.style).toEqual('styl')
+      expect(nxJson.generators['@simplisafe-oss/nx-gatsby'].application.style).toEqual('styl')
     })
   })
 
@@ -158,7 +158,7 @@ xdescribe('app', () => {
       expect(indexContent).toContain(`import styled from 'styled-components'`)
 
       const nxJson = readJson<NxJsonConfiguration>(tree, 'nx.json')
-      expect(nxJson.generators['@nx/gatsby'].application.style).toEqual(
+      expect(nxJson.generators['@simplisafe-oss/nx-gatsby'].application.style).toEqual(
         'styled-components'
       )
     })
@@ -184,7 +184,7 @@ xdescribe('app', () => {
       expect(indexContent).toContain(`import styled from '@emotion/styled'`)
 
       const nxJson = readJson<NxJsonConfiguration>(tree, 'nx.json')
-      expect(nxJson.generators['@nx/gatsby'].application.style).toEqual(
+      expect(nxJson.generators['@simplisafe-oss/nx-gatsby'].application.style).toEqual(
         '@emotion/styled'
       )
     })
@@ -215,7 +215,7 @@ xdescribe('app', () => {
       )
 
       const nxJson = readJson<NxJsonConfiguration>(tree, 'nx.json')
-      expect(nxJson.generators['@nx/gatsby'].application.style).toEqual(
+      expect(nxJson.generators['@simplisafe-oss/nx-gatsby'].application.style).toEqual(
         'styled-jsx'
       )
     })
@@ -253,7 +253,7 @@ xdescribe('app', () => {
     })
     const workspaceJson = readJson(tree, 'workspace.json')
     const targets = workspaceJson.projects['my-app'].targets
-    expect(targets.build.executor).toEqual('@nx/gatsby:build')
+    expect(targets.build.executor).toEqual('@simplisafe-oss/nx-gatsby:build')
     expect(targets.build.options).toMatchObject({
       outputPath: 'apps/my-app/public',
     })
@@ -267,7 +267,7 @@ xdescribe('app', () => {
     })
     const workspaceJson = readJson(tree, 'workspace.json')
     const targets = workspaceJson.projects['my-app'].targets
-    expect(targets.serve.executor).toEqual('@nx/gatsby:server')
+    expect(targets.serve.executor).toEqual('@simplisafe-oss/nx-gatsby:server')
     expect(targets.serve.options).toMatchObject({
       buildTarget: 'my-app:build',
     })

@@ -10,7 +10,7 @@ export function addProject(host: Tree, options: NormalizedSchema) {
   const targets: Record<string, any> = {}
 
   targets.build = {
-    builder: '@nx/gatsby:build',
+    builder: '@simplisafe-oss/nx-gatsby:build',
     options: {
       outputPath: `${options.projectRoot}/public`,
       uglify: true,
@@ -23,7 +23,7 @@ export function addProject(host: Tree, options: NormalizedSchema) {
   }
 
   targets.serve = {
-    builder: '@nx/gatsby:server',
+    builder: '@simplisafe-oss/nx-gatsby:server',
     options: {
       buildTarget: `${options.projectName}:build`,
     },

@@ -30,16 +30,11 @@
     "defaultBase": "main"
   },
   "generators": {
-    "@nx/react": {
-      "application": {
-        "babel": true
-      }
-    },
-    "@nx/gatsby": {
+    "@simplisafe-oss/nx-gatsby": {
       "application": {
         "style": "css"
       }
     }
   },
-  "defaultProject": "foo-bar"
+  "defaultProject": "gatsby-example"
 }

@@ -14,12 +14,12 @@ export function setDefaults(host: Tree, options: NormalizedSchema) {
   }
 
   workspace.generators = workspace.generators || {}
-  workspace.generators['@nx/gatsby'] = workspace.generators['@nx/gatsby'] || {}
-  const prev = workspace.generators['@nx/gatsby']
+  workspace.generators['@simplisafe-oss/nx-gatsby'] = workspace.generators['@simplisafe-oss/nx-gatsby'] || {}
+  const prev = workspace.generators['@simplisafe-oss/nx-gatsby']
 
   workspace.generators = {
     ...workspace.generators,
-    '@nx/gatsby': {
+    '@simplisafe-oss/nx-gatsby': {
       ...prev,
       application: {
         style: options.style,

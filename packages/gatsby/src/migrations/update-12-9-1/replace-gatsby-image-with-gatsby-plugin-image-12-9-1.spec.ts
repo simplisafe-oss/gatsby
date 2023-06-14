@@ -59,7 +59,7 @@ describe('Replace gatsby-image with gatsby-plugin-image to dependencies 12.9.1',
       name: 'app1',
       targets: {
         build: {
-          executor: '@nx/gatsby:build',
+          executor: '@simplisafe-oss/nx-gatsby:build',
         },
       },
     })

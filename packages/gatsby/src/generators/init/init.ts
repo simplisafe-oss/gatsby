@@ -35,8 +35,8 @@ import { InitSchema } from './schema'
 
 function updateDependencies(host: Tree) {
   updateJson(host, 'package.json', (json) => {
-    if (json.dependencies && json.dependencies['@nx/gatsby']) {
-      delete json.dependencies['@nx/gatsby']
+    if (json.dependencies && json.dependencies['@simplisafe-oss/nx-gatsby']) {
+      delete json.dependencies['@simplisafe-oss/nx-gatsby']
     }
     return json
   })
@@ -62,7 +62,7 @@ function updateDependencies(host: Tree) {
       ...(isPnpm ? { 'gatsby-plugin-pnpm': gatsbyPluginPnpm } : {}),
     },
     {
-      '@nx/gatsby': nxVersion,
+      '@simplisafe-oss/nx-gatsby': nxVersion,
       '@testing-library/react': testingLibraryReactVersion,
       'babel-plugin-module-resolver': babelPluginModuleResolverVersion,
       'babel-preset-gatsby': babelPresetGatsbyVersion,

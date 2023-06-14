@@ -21,7 +21,7 @@
     "update-16-0-0-add-nx-packages": {
       "cli": "nx",
       "version": "16.0.0-beta.1",
-      "description": "Replace @nrwl/gatsby with @nx/gatsby",
+      "description": "Replace @nrwl/gatsby with @simplisafe-oss/nx-gatsby",
       "implementation": "./src/migrations/update-16-0-0-add-nx-packages/update-16-0-0-add-nx-packages"
     }
   },

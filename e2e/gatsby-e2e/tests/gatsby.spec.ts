@@ -10,13 +10,13 @@ import {
 // TODO: fix and enable this when gatsby plugin is updated
 describe.skip('Gatsby Applications', () => {
   it('should generate a valid gatsby application', async () => {
-    ensureNxProject('@nx/gatsby', 'dist/packages/gatsby')
+    ensureNxProject('@simplisafe-oss/nx-gatsby', 'dist/packages/gatsby')
     const appName = uniq('app')
     runNxCommand(
-      `generate @nx/gatsby:app ${appName} --style css --no-interactive`
+      `generate @simplisafe-oss/nx-gatsby:app ${appName} --style css --no-interactive`
     )
     runNxCommand(
-      `generate @nx/gatsby:component header --project ${appName} --style css --no-interactive`
+      `generate @simplisafe-oss/nx-gatsby:component header --project ${appName} --style css --no-interactive`
     )
 
     checkFilesExist(

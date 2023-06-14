@@ -6,7 +6,7 @@ export async function addJsInclude(host: Tree) {
   projects.forEach((project) => {
     const tsconfigPath = `${project.root}/tsconfig.app.json`
 
-    if (project.targets?.build?.executor !== '@nx/gatsby:build') return
+    if (project.targets?.build?.executor !== '@simplisafe-oss/nx-gatsby:build') return
 
     if (!host.exists(tsconfigPath)) return
 
