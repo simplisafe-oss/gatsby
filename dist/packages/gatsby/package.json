@@ -1,0 +1,47 @@
+{
+  "name": "@simplisafe-oss/nx-gatsby",
+  "version": "1.0.0-rc.1",
+  "description": "Gatsby Plugin for Nx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simplisafe-oss/gatsby.git",
+    "directory": "packages/gatsby"
+  },
+  "keywords": [
+    "Monorepo",
+    "Gatsby",
+    "Web",
+    "Jest",
+    "Cypress",
+    "CLI"
+  ],
+  "main": "./index.js",
+  "typings": "./index.d.ts",
+  "author": "SimpliSafe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simplisafe-oss/gatsby/issues"
+  },
+  "homepage": "https://github.com/simplisafe-oss/gatsby",
+  "schematics": "./generators.json",
+  "builders": "./executors.json",
+  "ng-update": {
+    "requirements": {},
+    "migrations": "./migrations.json"
+  },
+  "peerDependencies": {
+    "gatsby": "^4.2.0"
+  },
+  "dependencies": {
+    "@nx/cypress": "^16.0.3",
+    "@nx/devkit": "^16.0.3",
+    "@nx/jest": "^16.0.3",
+    "@nx/linter": "^16.0.3",
+    "@nx/react": "^16.0.3",
+    "@nx/workspace": "^16.0.3",
+    "gatsby-cli": "^4.2.0",
+    "gatsby-codemods": "^3.2.0",
+    "react": "18.2.0"
+  },
+  "types": "./index.d.ts"
+}
