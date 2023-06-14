@@ -22,4 +22,28 @@ function onCreateBabelConfig({ actions }, options) {
   })
 }
 
-export { onCreateBabelConfig }
+
+function onCreateWebpackConfig({
+  actions
+}) {
+  actions.setWebpackConfig({
+    // Ignore gatsby generated .cache directory to prevent dev server looping.
+    watchOptions: {
+      ignored: /.cache/
+    },
+    resolve: {
+      fallback: {
+        path: false,
+        util: false,
+        crypto: false,
+        fs: false
+      }
+    },
+    infrastructureLogging: {
+      level: 'error'
+    }
+  })
+}
+
+
+export { onCreateBabelConfig, onCreateWebpackConfig }

@@ -1,5 +1,5 @@
 import { convertNxGenerator, formatFiles, Tree } from '@nx/devkit'
-import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial'
+import { runTasksInSerial } from '@nx/devkit'
 
 import { addStyleDependencies } from '../../utils/styles'
 import { gatsbyInitGenerator } from '../init/init'
@@ -14,6 +14,7 @@ import { normalizeOptions } from './lib/normalize-options'
 import { setDefaults } from './lib/set-defaults'
 import { updateJestConfig } from './lib/update-jest-config'
 import { Schema } from './schema'
+import { addVitest } from './lib/add-vitest'
 
 export async function applicationGenerator(host: Tree, schema: Schema) {
   const options = normalizeOptions(host, schema)
@@ -29,6 +30,7 @@ export async function applicationGenerator(host: Tree, schema: Schema) {
   const lintTask = await addLinting(host, options)
   const cypressTask = await addCypress(host, options)
   const jestTask = await addJest(host, options)
+  const vitestTask = await addVitest(host, options)
   updateJestConfig(host, options)
   addPrettierIgnoreEntry(host, options)
   addGitIgnoreEntry(host, options)
@@ -36,7 +38,7 @@ export async function applicationGenerator(host: Tree, schema: Schema) {
   setDefaults(host, options)
   await formatFiles(host)
 
-  return runTasksInSerial(initTask, styledTask, lintTask, cypressTask, jestTask)
+  return runTasksInSerial(initTask, styledTask, lintTask, cypressTask, jestTask, vitestTask)
 }
 
 export default applicationGenerator

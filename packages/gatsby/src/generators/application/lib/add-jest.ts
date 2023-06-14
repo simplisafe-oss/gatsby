@@ -2,6 +2,7 @@ import { Tree, updateJson } from '@nx/devkit'
 import { jestProjectGenerator } from '@nx/jest'
 import { NormalizedSchema } from './normalize-options'
 
+
 export async function addJest(host: Tree, options: NormalizedSchema) {
   if (options?.unitTestRunner !== 'jest') {
     return () => void 0

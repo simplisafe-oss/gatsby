@@ -6,6 +6,7 @@ import {
   GeneratorCallback,
   Tree,
   updateJson,
+  runTasksInSerial
 } from '@nx/devkit'
 import { jestInitGenerator } from '@nx/jest'
 import { reactDomVersion, reactInitGenerator, reactVersion } from '@nx/react'
@@ -30,7 +31,6 @@ import {
   testingLibraryReactVersion,
 } from '../../utils/versions'
 
-import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial'
 import { InitSchema } from './schema'
 
 function updateDependencies(host: Tree) {

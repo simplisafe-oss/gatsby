@@ -12,6 +12,9 @@
     },
     "publish": {
       "dependsOn": ["build"]
+    },
+    "test": {
+      "inputs": ["default", "^default"]
     }
   },
   "workspaceLayout": {
@@ -31,9 +34,7 @@
   },
   "generators": {
     "@simplisafe-oss/nx-gatsby": {
-      "application": {
-        "style": "css"
-      }
+      "application": {}
     },
     "@nx/react": {
       "application": {

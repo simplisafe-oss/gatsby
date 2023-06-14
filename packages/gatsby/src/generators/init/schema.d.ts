@@ -1,5 +1,6 @@
 export interface InitSchema {
-  unitTestRunner?: 'jest' | 'none'
+  projectName: string
+  unitTestRunner?: 'jest' | 'vitest' | 'none'
   e2eTestRunner?: 'cypress' | 'none'
   skipFormat?: boolean
 }

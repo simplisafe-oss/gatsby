@@ -12,10 +12,7 @@
       "rules": {
         "no-restricted-imports": [
           "error",
-          "@nx/workspace",
-          "@angular-devkit/core",
-          "@angular-devkit/schematics",
-          "@angular-devkit/architect"
+          "@nx/workspace"
         ]
       }
     }

@@ -5,7 +5,7 @@ export interface Schema {
   tags?: string
   style: SupportedStyles
   directory?: string
-  unitTestRunner?: 'jest' | 'none'
+  unitTestRunner?: 'jest' | 'vitest' | 'none'
   e2eTestRunner?: 'cypress' | 'none'
   js?: boolean
   setParserOptionsProject?: boolean
