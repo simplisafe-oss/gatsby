@@ -3,3 +3,7 @@
 /dist
 /coverage
 /tmp
+
+/apps/foo-bar/node_modules
+/apps/foo-bar/public
+/apps/foo-bar/.cache

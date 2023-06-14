@@ -2,3 +2,7 @@ node_modules
 dist
 tmp
 .env
+
+/apps/foo-bar/node_modules
+/apps/foo-bar/public
+/apps/foo-bar/.cache
