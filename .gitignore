@@ -2,11 +2,3 @@ node_modules
 dist
 tmp
 .env
-
-/apps/ex/node_modules
-/apps/ex/public
-/apps/ex/.cache
-
-/apps/ex/node_modules
-/apps/ex/public
-/apps/ex/.cache

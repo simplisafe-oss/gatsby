@@ -11,7 +11,7 @@ module.exports = function (api: any, presetOptions: GatsbyBabelOptions) {
   api.assertVersion(7)
   return {
     presets: [
-      '@nx/web/babel',
+      '@nx/js/babel',
       [
         require.resolve('babel-preset-gatsby'),
         getGatsbyBabelOptions({ presetOptions }),

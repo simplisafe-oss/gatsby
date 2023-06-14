@@ -3,11 +3,3 @@
 /dist
 /coverage
 /tmp
-
-/apps/ex/node_modules
-/apps/ex/public
-/apps/ex/.cache
-
-/apps/ex/node_modules
-/apps/ex/public
-/apps/ex/.cache
