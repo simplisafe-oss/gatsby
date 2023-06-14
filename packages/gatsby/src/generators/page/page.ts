@@ -1,18 +1,18 @@
-import { convertNxGenerator, Tree } from '@nx/devkit';
+import { convertNxGenerator, Tree } from '@nx/devkit'
 import {
   componentGenerator as reactComponentGenerator,
   SupportedStyles,
-} from '@nx/react';
+} from '@nx/react'
 
-import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial';
-import { addStyleDependencies } from '../../utils/styles';
+import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial'
+import { addStyleDependencies } from '../../utils/styles'
 
 interface Schema {
-  name: string;
-  project: string;
-  style: SupportedStyles;
-  directory?: string;
-  flat?: boolean;
+  name: string
+  project: string
+  style: SupportedStyles
+  directory?: string
+  flat?: boolean
 }
 
 /*
@@ -29,12 +29,12 @@ export async function pageGenerator(host: Tree, options: Schema) {
     classComponent: false,
     routing: false,
     flat: true,
-  });
+  })
 
-  const styledTask = addStyleDependencies(host, options.style);
+  const styledTask = addStyleDependencies(host, options.style)
 
-  return runTasksInSerial(componentTask, styledTask);
+  return runTasksInSerial(componentTask, styledTask)
 }
 
-export default pageGenerator;
-export const pageSchematic = convertNxGenerator(pageGenerator);
+export default pageGenerator
+export const pageSchematic = convertNxGenerator(pageGenerator)

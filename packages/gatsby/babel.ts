@@ -3,12 +3,12 @@
  */
 
 interface GatsbyBabelOptions {
-  reactRuntime?: string;
-  reactImportSource?: string;
+  reactRuntime?: string
+  reactImportSource?: string
 }
 
 module.exports = function (api: any, presetOptions: GatsbyBabelOptions) {
-  api.assertVersion(7);
+  api.assertVersion(7)
   return {
     presets: [
       '@nx/web/babel',
@@ -17,15 +17,15 @@ module.exports = function (api: any, presetOptions: GatsbyBabelOptions) {
         getGatsbyBabelOptions({ presetOptions }),
       ],
     ],
-  };
-};
+  }
+}
 
 function getGatsbyBabelOptions({ presetOptions }) {
   const gatsbyPresetOptions: Record<string, string | boolean> = {
     reactRuntime: presetOptions.reactRuntime ?? 'automatic',
-  };
-  if (presetOptions.reactImportSource) {
-    gatsbyPresetOptions.reactImportSource = presetOptions.reactImportSource;
   }
-  return gatsbyPresetOptions;
+  if (presetOptions.reactImportSource) {
+    gatsbyPresetOptions.reactImportSource = presetOptions.reactImportSource
+  }
+  return gatsbyPresetOptions
 }

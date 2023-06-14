@@ -1,15 +1,15 @@
-import { convertNxGenerator, Tree } from '@nx/devkit';
-import type { SupportedStyles } from '@nx/react';
-import { componentGenerator as reactComponentGenerator } from '@nx/react';
-import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial';
-import { addStyleDependencies } from '../../utils/styles';
+import { convertNxGenerator, Tree } from '@nx/devkit'
+import type { SupportedStyles } from '@nx/react'
+import { componentGenerator as reactComponentGenerator } from '@nx/react'
+import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial'
+import { addStyleDependencies } from '../../utils/styles'
 
 interface Schema {
-  name: string;
-  project: string;
-  style: SupportedStyles;
-  directory?: string;
-  flat?: boolean;
+  name: string
+  project: string
+  style: SupportedStyles
+  directory?: string
+  flat?: boolean
 }
 
 /*
@@ -25,12 +25,12 @@ export async function componentGenerator(host: Tree, options: Schema) {
     classComponent: false,
     routing: false,
     flat: true,
-  });
+  })
 
-  const styledTask = addStyleDependencies(host, options.style);
+  const styledTask = addStyleDependencies(host, options.style)
 
-  return runTasksInSerial(componentTask, styledTask);
+  return runTasksInSerial(componentTask, styledTask)
 }
 
-export default componentGenerator;
-export const componentSchematic = convertNxGenerator(componentGenerator);
+export default componentGenerator
+export const componentSchematic = convertNxGenerator(componentGenerator)

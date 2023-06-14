@@ -2,8 +2,8 @@ import {
   addDependenciesToPackageJson,
   GeneratorCallback,
   Tree,
-} from '@nx/devkit';
-import { CSS_IN_JS_DEPENDENCIES } from '@nx/react';
+} from '@nx/devkit'
+import { CSS_IN_JS_DEPENDENCIES } from '@nx/react'
 import {
   gatsbyPluginEmotionVersion,
   gatsbyPluginLessVersion,
@@ -12,7 +12,7 @@ import {
   gatsbyPluginStyledJsx,
   gatsbyPluginStylusVersion,
   sassVersion,
-} from './versions';
+} from './versions'
 
 export const GATSBY_SPECIFIC_STYLE_DEPENDENCIES = {
   'styled-components': {
@@ -53,18 +53,18 @@ export const GATSBY_SPECIFIC_STYLE_DEPENDENCIES = {
       ...CSS_IN_JS_DEPENDENCIES['styled-jsx'].devDependencies,
     },
   },
-};
+}
 
 export function addStyleDependencies(host: Tree, style: string) {
-  let installTask: GeneratorCallback;
+  let installTask: GeneratorCallback
 
-  const extraDependencies = GATSBY_SPECIFIC_STYLE_DEPENDENCIES[style];
+  const extraDependencies = GATSBY_SPECIFIC_STYLE_DEPENDENCIES[style]
 
-  if (!extraDependencies) return () => void 0;
+  if (!extraDependencies) return () => void 0
 
   return addDependenciesToPackageJson(
     host,
     extraDependencies.dependencies,
     extraDependencies.devDependencies
-  );
+  )
 }

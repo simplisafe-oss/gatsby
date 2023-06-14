@@ -1,5 +1,5 @@
 {
-  "name": "@nx/gatsby",
+  "name": "@simplisafe-oss/nx-gatsby",
   "version": "1.0.0-rc.1",
   "description": "Gatsby Plugin for Nx",
   "repository": {
@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/simplisafe-oss/gatsby/issues"
   },
-  "homepage": "https://nx.dev",
+  "homepage": "https://github.com/simplisafe-oss/gatsby",
   "schematics": "./generators.json",
   "builders": "./executors.json",
   "ng-update": {

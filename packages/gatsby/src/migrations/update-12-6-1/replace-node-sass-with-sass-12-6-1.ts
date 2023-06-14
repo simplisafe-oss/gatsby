@@ -4,34 +4,34 @@ import {
   readJson,
   removeDependenciesFromPackageJson,
   Tree,
-} from '@nx/devkit';
-import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial';
-import { sassVersion } from '../../utils/versions';
+} from '@nx/devkit'
+import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial'
+import { sassVersion } from '../../utils/versions'
 
 /**
  * For gatsby app with style scss option, replace node-sass with sass in package.json
  */
 export default async function update(tree: Tree) {
-  const packageJson = readJson(tree, 'package.json');
+  const packageJson = readJson(tree, 'package.json')
 
   // does not proceed if gatsby-plugin-sass is not a part of devDependencies
   if (!packageJson.devDependencies['gatsby-plugin-sass']) {
-    return;
+    return
   }
 
   const uninstallTask = removeDependenciesFromPackageJson(
     tree,
     [],
     ['node-sass']
-  );
+  )
   const installTask = addDependenciesToPackageJson(
     tree,
     {},
     {
       sass: sassVersion,
     }
-  );
-  await formatFiles(tree);
+  )
+  await formatFiles(tree)
 
-  return runTasksInSerial(uninstallTask, installTask);
+  return runTasksInSerial(uninstallTask, installTask)
 }

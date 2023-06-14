@@ -1,4 +1,4 @@
-import { cypressInitGenerator } from '@nx/cypress';
+import { cypressInitGenerator } from '@nx/cypress'
 import {
   addDependenciesToPackageJson,
   convertNxGenerator,
@@ -6,9 +6,9 @@ import {
   GeneratorCallback,
   Tree,
   updateJson,
-} from '@nx/devkit';
-import { jestInitGenerator } from '@nx/jest';
-import { reactDomVersion, reactInitGenerator, reactVersion } from '@nx/react';
+} from '@nx/devkit'
+import { jestInitGenerator } from '@nx/jest'
+import { reactDomVersion, reactInitGenerator, reactVersion } from '@nx/react'
 
 import {
   babelPluginModuleResolverVersion,
@@ -28,20 +28,20 @@ import {
   propTypesVersion,
   reactHelmetVersion,
   testingLibraryReactVersion,
-} from '../../utils/versions';
+} from '../../utils/versions'
 
-import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial';
-import { InitSchema } from './schema';
+import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial'
+import { InitSchema } from './schema'
 
 function updateDependencies(host: Tree) {
   updateJson(host, 'package.json', (json) => {
     if (json.dependencies && json.dependencies['@nx/gatsby']) {
-      delete json.dependencies['@nx/gatsby'];
+      delete json.dependencies['@nx/gatsby']
     }
-    return json;
-  });
+    return json
+  })
 
-  const isPnpm = detectPackageManager(host.root) === 'pnpm';
+  const isPnpm = detectPackageManager(host.root) === 'pnpm'
   return addDependenciesToPackageJson(
     host,
     {
@@ -67,29 +67,29 @@ function updateDependencies(host: Tree) {
       'babel-plugin-module-resolver': babelPluginModuleResolverVersion,
       'babel-preset-gatsby': babelPresetGatsbyVersion,
     }
-  );
+  )
 }
 
 export async function gatsbyInitGenerator(host: Tree, schema: InitSchema) {
-  const tasks: GeneratorCallback[] = [];
+  const tasks: GeneratorCallback[] = []
 
   if (!schema.unitTestRunner || schema.unitTestRunner === 'jest') {
-    const jestTask = await jestInitGenerator(host, {});
-    tasks.push(jestTask);
+    const jestTask = await jestInitGenerator(host, {})
+    tasks.push(jestTask)
   }
   if (!schema.e2eTestRunner || schema.e2eTestRunner === 'cypress') {
-    const cypressTask = await cypressInitGenerator(host, {});
-    tasks.push(cypressTask);
+    const cypressTask = await cypressInitGenerator(host, {})
+    tasks.push(cypressTask)
   }
 
-  const reactTask = await reactInitGenerator(host, schema);
-  tasks.push(reactTask);
+  const reactTask = await reactInitGenerator(host, schema)
+  tasks.push(reactTask)
 
-  const installTask = updateDependencies(host);
-  tasks.push(installTask);
+  const installTask = updateDependencies(host)
+  tasks.push(installTask)
 
-  return runTasksInSerial(...tasks);
+  return runTasksInSerial(...tasks)
 }
 
-export default gatsbyInitGenerator;
-export const gatsbyInitSchematic = convertNxGenerator(gatsbyInitGenerator);
+export default gatsbyInitGenerator
+export const gatsbyInitSchematic = convertNxGenerator(gatsbyInitGenerator)

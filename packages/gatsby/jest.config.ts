@@ -8,4 +8,4 @@ export default {
   displayName: 'gatsby',
   testEnvironment: 'node',
   preset: '../../jest.preset.js',
-};
+}

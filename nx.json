@@ -1,0 +1,25 @@
+{
+  "npmScope": "simplisafe-oss",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "workspaceLayout": {
+    "appsDir": "e2e",
+    "libsDir": "packages"
+  },
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build", "build-base"]
+    },
+    "lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+    },
+    "e2e": {
+      "dependsOn": ["^build"]
+    },
+    "publish": {
+      "dependsOn": ["build"]
+    }
+  }
+}

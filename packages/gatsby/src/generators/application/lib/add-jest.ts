@@ -1,10 +1,10 @@
-import { Tree, updateJson } from '@nx/devkit';
-import { jestProjectGenerator } from '@nx/jest';
-import { NormalizedSchema } from './normalize-options';
+import { Tree, updateJson } from '@nx/devkit'
+import { jestProjectGenerator } from '@nx/jest'
+import { NormalizedSchema } from './normalize-options'
 
 export async function addJest(host: Tree, options: NormalizedSchema) {
   if (options?.unitTestRunner !== 'jest') {
-    return () => void 0;
+    return () => void 0
   }
 
   const installTask = await jestProjectGenerator(host, {
@@ -14,12 +14,12 @@ export async function addJest(host: Tree, options: NormalizedSchema) {
     setupFile: 'none',
     compiler: 'babel',
     js: options.js,
-  });
+  })
 
   updateJson(host, `${options.projectRoot}/tsconfig.spec.json`, (json) => {
-    json.compilerOptions.jsx = 'react';
-    return json;
-  });
+    json.compilerOptions.jsx = 'react'
+    return json
+  })
 
-  return installTask;
+  return installTask
 }

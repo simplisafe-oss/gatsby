@@ -807,13 +807,13 @@ export function createAppJsx(name: string) {
           </p>
         </div>
       </div>
-`;
+`
 }
 
 export function createPageWrapperStyle() {
-  return '';
+  return ''
 }
 
 export function createPageStyleContent() {
-  return '';
+  return ''
 }

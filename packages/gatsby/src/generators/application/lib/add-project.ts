@@ -3,11 +3,11 @@ import {
   joinPathFragments,
   ProjectConfiguration,
   Tree,
-} from '@nx/devkit';
-import { NormalizedSchema } from './normalize-options';
+} from '@nx/devkit'
+import { NormalizedSchema } from './normalize-options'
 
 export function addProject(host: Tree, options: NormalizedSchema) {
-  const targets: Record<string, any> = {};
+  const targets: Record<string, any> = {}
 
   targets.build = {
     builder: '@nx/gatsby:build',
@@ -20,7 +20,7 @@ export function addProject(host: Tree, options: NormalizedSchema) {
     configurations: {
       production: {},
     },
-  };
+  }
 
   targets.serve = {
     builder: '@nx/gatsby:server',
@@ -32,7 +32,7 @@ export function addProject(host: Tree, options: NormalizedSchema) {
         buildTarget: `${options.projectName}:build:production`,
       },
     },
-  };
+  }
 
   const project: ProjectConfiguration = {
     root: options.projectRoot,
@@ -40,12 +40,12 @@ export function addProject(host: Tree, options: NormalizedSchema) {
     projectType: 'application',
     targets,
     tags: options.parsedTags,
-  };
+  }
 
   addProjectConfiguration(
     host,
     options.projectName,
     project,
     options.standaloneConfig
-  );
+  )
 }

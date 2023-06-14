@@ -6,12 +6,12 @@ import {
   removeDependenciesFromPackageJson,
   Tree,
   visitNotIgnoredFiles,
-} from '@nx/devkit';
-import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial';
-import { exec } from 'child_process';
-import { join } from 'path';
+} from '@nx/devkit'
+import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial'
+import { exec } from 'child_process'
+import { join } from 'path'
 
-import { gatsbyPluginImageVersion } from '../../utils/versions';
+import { gatsbyPluginImageVersion } from '../../utils/versions'
 
 /**
  * For gatsby app, replace gatsby-image with gatsby-plugin-image.
@@ -20,18 +20,18 @@ import { gatsbyPluginImageVersion } from '../../utils/versions';
  * It also add gatsby-plugin-image to project app's package.json and gatsby-config.js.
  */
 export default async function update(tree: Tree) {
-  const packageJson = readJson(tree, 'package.json');
+  const packageJson = readJson(tree, 'package.json')
 
   // does not proceed if gatsby-image is not a part of devDependencies
   if (!packageJson.dependencies['gatsby-image']) {
-    return;
+    return
   }
 
-  const replacePackagesTasks = replaceInPackageJson(tree);
-  const updateImportsTasks = updateImports(tree);
-  updateAppPackageJson(tree);
-  await formatFiles(tree);
-  return runTasksInSerial(...replacePackagesTasks, ...updateImportsTasks);
+  const replacePackagesTasks = replaceInPackageJson(tree)
+  const updateImportsTasks = updateImports(tree)
+  updateAppPackageJson(tree)
+  await formatFiles(tree)
+  return runTasksInSerial(...replacePackagesTasks, ...updateImportsTasks)
 }
 
 function replaceInPackageJson(tree: Tree) {
@@ -39,30 +39,30 @@ function replaceInPackageJson(tree: Tree) {
     tree,
     ['gatsby-image'],
     []
-  );
+  )
   const installTask = addDependenciesToPackageJson(
     tree,
     { 'gatsby-plugin-image': gatsbyPluginImageVersion },
     {}
-  );
+  )
 
-  return [uninstallTask, installTask];
+  return [uninstallTask, installTask]
 }
 
 function updateImports(tree: Tree) {
-  const projects = getProjects(tree);
-  const tasks = [];
-  const replaceProjectRef = new RegExp('gatsby-image', 'g');
+  const projects = getProjects(tree)
+  const tasks = []
+  const replaceProjectRef = new RegExp('gatsby-image', 'g')
   for (const [name, definition] of Array.from(projects.entries())) {
     visitNotIgnoredFiles(tree, definition.root, (file) => {
-      const contents = tree.read(file, 'utf-8');
+      const contents = tree.read(file, 'utf-8')
       if (!replaceProjectRef.test(contents)) {
-        return;
+        return
       }
-      tasks.push(runGatsbyCodemods(file, tree));
-    });
+      tasks.push(runGatsbyCodemods(file, tree))
+    })
   }
-  return tasks;
+  return tasks
 }
 
 /**
@@ -78,12 +78,12 @@ async function runGatsbyCodemods(file: string, tree: Tree) {
       {
         cwd: join(tree.root),
       }
-    );
+    )
 
     childProcess.on('error', (err) => {
-      reject(err);
-      childProcess.kill();
-    });
+      reject(err)
+      childProcess.kill()
+    })
 
     childProcess.on('exit', (code) => {
       if (code !== 0) {
@@ -91,37 +91,37 @@ async function runGatsbyCodemods(file: string, tree: Tree) {
           new Error(
             'Could not migrate to gatsby-plugin-image. See errors above.'
           )
-        );
+        )
       } else {
-        resolve();
+        resolve()
       }
-      childProcess.kill();
-    });
-  });
+      childProcess.kill()
+    })
+  })
 }
 
 function updateAppPackageJson(tree: Tree) {
-  const projects = getProjects(tree);
+  const projects = getProjects(tree)
 
   projects.forEach((project) => {
-    if (project.targets?.build?.executor !== '@nx/gatsby:build') return;
+    if (project.targets?.build?.executor !== '@nx/gatsby:build') return
 
-    const appPackageJsonPath = `${project.root}/package.json`;
+    const appPackageJsonPath = `${project.root}/package.json`
     if (tree.exists(appPackageJsonPath)) {
       addDependenciesToPackageJson(
         tree,
         { 'gatsby-plugin-image': '*' },
         {},
         appPackageJsonPath
-      );
+      )
     }
 
-    const gatsbyConfigPath = `${project.root}/gatsby-config.js`;
+    const gatsbyConfigPath = `${project.root}/gatsby-config.js`
     if (tree.exists(gatsbyConfigPath)) {
-      const contents = tree.read(gatsbyConfigPath, 'utf-8');
-      const gatsbyPluginImageRegex = new RegExp('gatsby-plugin-image', 'g');
+      const contents = tree.read(gatsbyConfigPath, 'utf-8')
+      const gatsbyPluginImageRegex = new RegExp('gatsby-plugin-image', 'g')
       if (gatsbyPluginImageRegex.test(contents)) {
-        return;
+        return
       }
       tree.write(
         gatsbyConfigPath,
@@ -129,7 +129,7 @@ function updateAppPackageJson(tree: Tree) {
           `\`gatsby-transformer-sharp\``,
           `\`gatsby-plugin-image\`, \`gatsby-transformer-sharp\``
         )
-      );
+      )
     }
-  });
+  })
 }
