@@ -7,6 +7,8 @@ import {
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing'
 import { applicationGenerator } from './application'
 
+test('placeholder')
+
 // describe('app', () => {
 //   let tree: Tree
 
