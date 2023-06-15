@@ -3,7 +3,7 @@ import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing'
 
 import { gatsbyInitGenerator } from './init'
 
-xdescribe('init', () => {
+describe('init', () => {
   let tree: Tree
 
   beforeEach(() => {
@@ -11,23 +11,20 @@ xdescribe('init', () => {
   })
 
   it('should add react dependencies', async () => {
-    await gatsbyInitGenerator(tree, {})
+    await gatsbyInitGenerator(tree, { projectName: 'test-project'})
     const packageJson = readJson(tree, 'package.json')
     expect(packageJson.dependencies['@simplisafe-oss/nx-gatsby']).toBeUndefined()
     expect(packageJson.dependencies['@nx/react']).toBeUndefined()
     expect(packageJson.dependencies['gatsby']).toBeDefined()
   })
 
-  describe('defaultCollection', () => {
-    it('should be set if none was set before', async () => {
-      await gatsbyInitGenerator(tree, {})
-      const { cli } = readJson<NxJsonConfiguration>(tree, 'nx.json')
-      expect(cli.defaultCollection).toEqual('@simplisafe-oss/nx-gatsby')
-    })
+  it('should not add jest config if unitTestRunner is none', async () => {
+    await gatsbyInitGenerator(tree, { unitTestRunner: 'none', projectName: 'test project' })
+    expect(tree.exists('jest.config.ts')).toEqual(false)
   })
 
-  it('should not add jest config if unitTestRunner is none', async () => {
-    await gatsbyInitGenerator(tree, { unitTestRunner: 'none' })
-    expect(tree.exists('jest.config.js')).toEqual(false)
+  it('should add jest config if unitTestRunner is jest', async () => {
+    await gatsbyInitGenerator(tree, { unitTestRunner: 'jest', projectName: 'test project' })
+    expect(tree.exists('jest.config.ts')).toEqual(true)
   })
 })

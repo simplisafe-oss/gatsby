@@ -5,9 +5,8 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
+      "executor": "@nx/vite:test",
       "options": {
-        "jestConfig": "packages/gatsby/jest.config.ts",
         "passWithNoTests": true
       },
       "outputs": ["coverage/packages/gatsby"]
