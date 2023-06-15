@@ -1,5 +1,9 @@
-import { convertNxGenerator, formatFiles, Tree } from '@nx/devkit'
-import { runTasksInSerial } from '@nx/devkit'
+import {
+  convertNxGenerator,
+  formatFiles,
+  runTasksInSerial,
+  Tree,
+} from '@nx/devkit'
 
 import { addStyleDependencies } from '../../utils/styles'
 import { gatsbyInitGenerator } from '../init/init'
@@ -9,12 +13,12 @@ import { addJest } from './lib/add-jest'
 import { addLinting } from './lib/add-linting'
 import { addPrettierIgnoreEntry } from './lib/add-prettier-ignore-entry'
 import { addProject } from './lib/add-project'
+import { addVitest } from './lib/add-vitest'
 import { createApplicationFiles } from './lib/create-application-files'
 import { normalizeOptions } from './lib/normalize-options'
 import { setDefaults } from './lib/set-defaults'
 import { updateJestConfig } from './lib/update-jest-config'
 import { Schema } from './schema'
-import { addVitest } from './lib/add-vitest'
 
 export async function applicationGenerator(host: Tree, schema: Schema) {
   const options = normalizeOptions(host, schema)
@@ -38,7 +42,14 @@ export async function applicationGenerator(host: Tree, schema: Schema) {
   setDefaults(host, options)
   await formatFiles(host)
 
-  return runTasksInSerial(initTask, styledTask, lintTask, cypressTask, jestTask, vitestTask)
+  return runTasksInSerial(
+    initTask,
+    styledTask,
+    lintTask,
+    cypressTask,
+    jestTask,
+    vitestTask
+  )
 }
 
 export default applicationGenerator

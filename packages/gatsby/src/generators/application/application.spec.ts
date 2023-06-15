@@ -1,12 +1,3 @@
-import {
-  NxJsonConfiguration,
-  readJson,
-  readProjectConfiguration,
-  Tree,
-} from '@nx/devkit'
-import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing'
-import { applicationGenerator } from './application'
-
 test('placeholder')
 
 // describe('app', () => {

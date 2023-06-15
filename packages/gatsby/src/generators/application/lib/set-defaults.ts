@@ -1,7 +1,7 @@
 import {
   readProjectConfiguration,
   Tree,
-  updateProjectConfiguration
+  updateProjectConfiguration,
 } from '@nx/devkit'
 
 import { NormalizedSchema } from './normalize-options'
@@ -10,7 +10,8 @@ export function setDefaults(host: Tree, options: NormalizedSchema) {
   const workspace = readProjectConfiguration(host, options.projectName)
 
   workspace.generators = workspace.generators || {}
-  workspace.generators['@simplisafe-oss/nx-gatsby'] = workspace.generators['@simplisafe-oss/nx-gatsby'] || {}
+  workspace.generators['@simplisafe-oss/nx-gatsby'] =
+    workspace.generators['@simplisafe-oss/nx-gatsby'] || {}
   const prev = workspace.generators['@simplisafe-oss/nx-gatsby']
 
   workspace.generators = {
@@ -24,5 +25,5 @@ export function setDefaults(host: Tree, options: NormalizedSchema) {
     },
   }
 
-  updateProjectConfiguration(host, options.projectName ,workspace)
+  updateProjectConfiguration(host, options.projectName, workspace)
 }

@@ -1,7 +1,7 @@
-import { convertNxGenerator, Tree, runTasksInSerial } from '@nx/devkit'
+import { Tree, convertNxGenerator, runTasksInSerial } from '@nx/devkit'
 import {
-  componentGenerator as reactComponentGenerator,
   SupportedStyles,
+  componentGenerator as reactComponentGenerator,
 } from '@nx/react'
 
 import { addStyleDependencies } from '../../utils/styles'

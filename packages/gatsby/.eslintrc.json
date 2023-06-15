@@ -10,10 +10,7 @@
       "files": ["**/*.ts"],
       "excludedFiles": ["./src/migrations/**"],
       "rules": {
-        "no-restricted-imports": [
-          "error",
-          "@nx/workspace"
-        ]
+        "no-restricted-imports": ["error", "@nx/workspace"]
       }
     }
   ],

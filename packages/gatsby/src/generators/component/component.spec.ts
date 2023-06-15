@@ -1,8 +1,3 @@
-import { Tree } from '@nx/devkit'
-import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing'
-import { applicationGenerator } from '../application/application'
-import { componentGenerator } from './component'
-
 test('placeholder')
 
 // describe('component', () => {

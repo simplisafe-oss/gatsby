@@ -24,7 +24,7 @@ describe('update-16-0-0-replace-nrwl-with-simplisafe', () => {
       readJson(tree, 'package.json').devDependencies['@nrwl/gatsby']
     ).not.toBeDefined()
 
-        expect(
+    expect(
       readJson(tree, 'package.json').dependencies['@nx/gatsby']
     ).not.toBeDefined()
     expect(

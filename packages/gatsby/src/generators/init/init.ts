@@ -1,12 +1,12 @@
 import { cypressInitGenerator } from '@nx/cypress'
 import {
+  GeneratorCallback,
+  Tree,
   addDependenciesToPackageJson,
   convertNxGenerator,
   detectPackageManager,
-  GeneratorCallback,
-  Tree,
+  runTasksInSerial,
   updateJson,
-  runTasksInSerial
 } from '@nx/devkit'
 import { jestInitGenerator } from '@nx/jest'
 import { reactDomVersion, reactInitGenerator, reactVersion } from '@nx/react'

@@ -55,10 +55,7 @@ if (!parsedArgs.local) {
 }
 
 function updatePackageJsonFiles(parsedVersion, isLocal) {
-  let pkgFiles = [
-    'package.json',
-    'dist/npm/gatsby/package.json',
-  ]
+  let pkgFiles = ['package.json', 'dist/npm/gatsby/package.json']
   if (isLocal) {
     pkgFiles = pkgFiles.filter((f) => f !== 'package.json')
   }
