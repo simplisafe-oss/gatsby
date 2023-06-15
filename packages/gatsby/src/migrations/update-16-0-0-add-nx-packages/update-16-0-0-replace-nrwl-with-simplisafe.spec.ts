@@ -1,19 +1,20 @@
 import { readJson, Tree, updateJson } from '@nx/devkit'
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing'
-import replacePackage from './update-16-0-0-add-nx-packages'
+import replacePackage from './update-16-0-0-replace-nrwl-with-simplisafe'
 
-describe('update-16-0-0-add-nx-packages', () => {
+describe('update-16-0-0-replace-nrwl-with-simplisafe', () => {
   let tree: Tree
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace()
 
     updateJson(tree, 'package.json', (json) => {
-      json.devDependencies['@simplisafe-oss/nx-gatsby'] = '16.0.0'
+      json.devDependencies['@nrwl/gatsby'] = '*'
+      json.devDependencies['@nx/gatsby'] = '*'
       return json
     })
   })
 
-  it('should remove the dependency on @nrwl/gatsby', async () => {
+  it('should remove the dependencies on @nrwl/gatsby and @nx/gatsby', async () => {
     await replacePackage(tree)
 
     expect(
@@ -21,6 +22,13 @@ describe('update-16-0-0-add-nx-packages', () => {
     ).not.toBeDefined()
     expect(
       readJson(tree, 'package.json').devDependencies['@nrwl/gatsby']
+    ).not.toBeDefined()
+
+        expect(
+      readJson(tree, 'package.json').dependencies['@nx/gatsby']
+    ).not.toBeDefined()
+    expect(
+      readJson(tree, 'package.json').devDependencies['@nx/gatsby']
     ).not.toBeDefined()
   })
 
