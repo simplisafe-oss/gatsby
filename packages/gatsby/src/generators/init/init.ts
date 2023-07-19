@@ -33,15 +33,20 @@ import {
 
 import { InitSchema } from './schema'
 
-function updateDependencies(host: Tree) {
+// Removes invalid dependencies
+export function updateDependencies(host: Tree) {
   updateJson(host, 'package.json', (json) => {
-    if (json.dependencies && json.dependencies['@simplisafe-oss/nx-gatsby']) {
-      delete json.dependencies['@simplisafe-oss/nx-gatsby']
+    if (json.dependencies && json.dependencies['@nrwl/gatsby']) {
+      delete json.dependencies['@nrwl/gatsby']
+    }
+    if (json.dependencies && json.dependencies['@nx/gatsby']) {
+      delete json.dependencies['@nx/gatsby']
     }
     return json
   })
 
   const isPnpm = detectPackageManager(host.root) === 'pnpm'
+
   return addDependenciesToPackageJson(
     host,
     {

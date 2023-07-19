@@ -11,16 +11,6 @@ export default defineConfig({
       root: '../../',
     }),
   ],
-
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [
-  //    viteTsConfigPaths({
-  //      root: '../../',
-  //    }),
-  //  ],
-  // },
-
   test: {
     globals: true,
     cache: {
@@ -28,5 +18,14 @@ export default defineConfig({
     },
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    coverage: {
+      enabled: true,
+      reportsDirectory: './coverage',
+      reporter: ['text'],
+      provider: 'v8',
+      functions: 100,
+      statements: 100,
+      branches: 80,
+    },
   },
 })

@@ -1,7 +1,7 @@
-import { readJson, Tree } from '@nx/devkit'
+import { readJson, Tree, writeJson } from '@nx/devkit'
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing'
 
-import { gatsbyInitGenerator } from './init'
+import { gatsbyInitGenerator, updateDependencies } from './init'
 
 describe('init', () => {
   let tree: Tree
@@ -35,4 +35,44 @@ describe('init', () => {
     })
     expect(tree.exists('jest.config.ts')).toEqual(true)
   })
+})
+
+test('removes @nrwl/gatsby', () => {
+  const tree = createTreeWithEmptyWorkspace()
+
+  writeJson(tree, 'package.json', {
+    dependencies: {
+      '@nrwl/gatsby': '*',
+    },
+  })
+  updateDependencies(tree)
+
+  expect(readJson(tree, 'package.json')['dependencies']).not.toEqual(
+    expect.objectContaining({ '@nrwl/gatsby': '*' })
+  )
+})
+
+test('removes @nx/gatsby', () => {
+  const tree = createTreeWithEmptyWorkspace()
+
+  writeJson(tree, 'package.json', {
+    dependencies: {
+      '@nx/gatsby': '*',
+    },
+  })
+  updateDependencies(tree)
+
+  expect(readJson(tree, 'package.json')['dependencies']).not.toEqual(
+    expect.objectContaining({ '@nx/gatsby': '*' })
+  )
+})
+
+test('pnpm', () => {
+  const tree = createTreeWithEmptyWorkspace()
+
+  writeJson(tree, 'package.json', {
+    packageManager: 'pnpm',
+  })
+
+  updateDependencies(tree)
 })
