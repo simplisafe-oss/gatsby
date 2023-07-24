@@ -26,7 +26,7 @@ function onCreateWebpackConfig({ actions }) {
   actions.setWebpackConfig({
     // Ignore gatsby generated .cache directory to prevent dev server looping.
     watchOptions: {
-      ignored: /.cache/,
+      ignored: [/.cache/, /public/, /node_modules/, /dist/, '**/*.d.ts'],
     },
     resolve: {
       fallback: {
