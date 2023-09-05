@@ -1,6 +1,6 @@
 {
   "name": "@simplisafe-oss/nx-gatsby",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0",
   "description": "Gatsby Plugin for Nx",
   "repository": {
     "type": "git",
